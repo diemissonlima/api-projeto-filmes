@@ -57,6 +57,44 @@ class Genero {
 
         return false;
     }
-}
+
+    public function editar() {
+        $query = "UPDATE " . $this->table_name . " SET nome=:nome, descricao=:descricao WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+
+        // Limpar os dados
+        $this->nome = htmlspecialchars(strip_tags($this->nome));
+        $this->descricao = htmlspecialchars(strip_tags($this->descricao));
+
+        $stmt->bindParam(":nome", $this->nome);
+        $stmt->bindParam(":descricao", $this->descricao);
+        $stmt->bindParam(":id", $this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function delete() {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+
+        // Limpar o id
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        // Vinculando o id
+        $stmt->bindParam(':id', $this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+};
 
 ?>

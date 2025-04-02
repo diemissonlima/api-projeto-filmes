@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $num = $stmt->rowCount();
     }
 
-
     if ($num > 0) {
         $generos_arr = array();
         $generos_arr['dados'] = array();
