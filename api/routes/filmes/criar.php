@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $filme->titulo = $_POST['titulo'];
     $filme->genero = $_POST['genero'];
+    $filme->genero2 = $_POST['genero_2'];
+    $filme->genero3 = $_POST['genero_3'];
     $filme->sinopse = $_POST['sinopse'];
     $filme->capa = $newFileName;
     $filme->trailer_url = $_POST['trailer_url'];

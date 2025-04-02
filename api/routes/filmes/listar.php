@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $filme_item = array(
                 'id' => $id,
                 'titulo' => $titulo,
-                'genero' => $genero,
+                'generos' => array_values(array_filter([$genero, $genero_2, $genero_3])),
                 'sinopse' => $sinopse,
                 'capa' => $capa,
                 'trailer_url' => $trailer_url,

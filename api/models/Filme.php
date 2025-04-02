@@ -7,6 +7,8 @@ class Filme {
     public $id;
     public $titulo;
     public $genero;
+    public $genero2 = "";
+    public $genero3 = "";
     public $sinopse;
     public $capa;
     public $trailer_url;
@@ -43,13 +45,15 @@ class Filme {
     // Método para inserir um filme
     public function inserir() {
 
-        $query = "INSERT INTO " . $this->table_name . " SET titulo=:titulo, genero=:genero, sinopse=:sinopse, capa=:capa, trailer_url=:trailer_url, data_lancamento=:data_lancamento, duracao=:duracao";
+        $query = "INSERT INTO " . $this->table_name . " SET titulo=:titulo, genero=:genero, genero_2=:genero2, genero_3=:genero3, sinopse=:sinopse, capa=:capa, trailer_url=:trailer_url, data_lancamento=:data_lancamento, duracao=:duracao";
 
         $stmt = $this->conn->prepare($query);
 
         // Limpar os dados
         $this->titulo = htmlspecialchars(strip_tags($this->titulo));
         $this->genero = htmlspecialchars(strip_tags($this->genero));
+        $this->genero2 = htmlspecialchars(strip_tags($this->genero2));
+        $this->genero3 = htmlspecialchars(strip_tags($this->genero3));
         $this->sinopse = htmlspecialchars(strip_tags($this->sinopse));
         $this->capa = htmlspecialchars(strip_tags($this->capa));
         $this->trailer_url = htmlspecialchars(strip_tags($this->trailer_url));
@@ -59,6 +63,8 @@ class Filme {
         // Vinculando parametros
         $stmt->bindParam(":titulo", $this->titulo);
         $stmt->bindParam(":genero", $this->genero);
+        $stmt->bindParam(":genero2", $this->genero2);
+        $stmt->bindParam(":genero3", $this->genero3);
         $stmt->bindParam(":sinopse", $this->sinopse);
         $stmt->bindParam(":capa", $this->capa);
         $stmt->bindParam(":trailer_url", $this->trailer_url);
@@ -73,13 +79,15 @@ class Filme {
     }
 
     public function editar() {
-        $query = "UPDATE " . $this->table_name . " SET titulo=:titulo, genero=:genero, sinopse=:sinopse, capa=:capa, trailer_url=:trailer_url, data_lancamento=:data_lancamento, duracao=:duracao WHERE id = :id";
+        $query = "UPDATE " . $this->table_name . " SET titulo=:titulo, genero=:genero, genero_2=:genero2, genero_3=:genero3, sinopse=:sinopse, capa=:capa, trailer_url=:trailer_url, data_lancamento=:data_lancamento, duracao=:duracao WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
 
         // Limpar os dados
         $this->titulo = htmlspecialchars(strip_tags($this->titulo));
         $this->genero = htmlspecialchars(strip_tags($this->genero));
+        $this->genero2 = htmlspecialchars(strip_tags($this->genero2));
+        $this->genero3 = htmlspecialchars(strip_tags($this->genero3));
         $this->sinopse = htmlspecialchars(strip_tags($this->sinopse));
         $this->capa = htmlspecialchars(strip_tags($this->capa));
         $this->trailer_url = htmlspecialchars(strip_tags($this->trailer_url));
@@ -89,6 +97,8 @@ class Filme {
         // Vinculando parametros
         $stmt->bindParam(":titulo", $this->titulo);
         $stmt->bindParam(":genero", $this->genero);
+        $stmt->bindParam(":genero2", $this->genero2);
+        $stmt->bindParam(":genero3", $this->genero3);
         $stmt->bindParam(":sinopse", $this->sinopse);
         $stmt->bindParam(":capa", $this->capa);
         $stmt->bindParam(":trailer_url", $this->trailer_url);

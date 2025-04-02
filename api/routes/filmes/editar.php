@@ -53,6 +53,8 @@ if ($method === 'POST') {
         $filme->id = $_POST['id'];
         $filme->titulo = $_POST['titulo'];
         $filme->genero = $_POST['genero'];
+        $filme->genero2 = $_POST['genero_2'];
+        $filme->genero3 = $_POST['genero_3'];
         $filme->sinopse = $_POST['sinopse'];
         $filme->capa = isset($filme->capa) ? $filme->capa : null; // Se não houve upload, mantemos o valor anterior
         $filme->trailer_url = $_POST['trailer_url'];
@@ -72,4 +74,5 @@ if ($method === 'POST') {
 } else {
     echo json_encode(array('status' => 'error', 'message' => 'Método não permitido'));
 }
+
 ?>
